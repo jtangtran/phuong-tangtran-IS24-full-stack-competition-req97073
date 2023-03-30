@@ -7,8 +7,6 @@ const PORT = 3000;
 const productRoute = require('./routes/product.route');
 const swaggerRoute = require('./routes/swagger.route');
 
-var { initializeProducts } = require('./controllers/product.controller');
-
 app.use(cors());
 app.use(express.json());
 app.use('/api', [productRoute, swaggerRoute] );
@@ -22,5 +20,4 @@ app.get("*", (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    initializeProducts();
 });
