@@ -9,8 +9,9 @@ Once the command has been successfully completed, on the server terminal please 
 
 The application should now be running. 
 
+Thank you for taking the time to review my code!
+
 ## Links:
 Frontend: http://localhost:4200
-Backend (Swagger Documentation): http://localhost:3000/api/api-docs
 
-Thank you for taking the time to review my code!
+Backend (Swagger Documentation): http://localhost:3000/api/api-docs
