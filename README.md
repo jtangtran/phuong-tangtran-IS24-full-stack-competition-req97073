@@ -9,7 +9,7 @@ Once the command has been successfully completed, on the server terminal please 
 
 The application should now be running. 
 
-Links:
+## Links:
 Frontend: http://localhost:4200
 Backend (Swagger Documentation): http://localhost:3000/api/api-docs
 
