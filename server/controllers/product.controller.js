@@ -1,7 +1,7 @@
 var fs = require('fs');
 var products = require('../data.json');
 var fakerator = require("fakerator")('en-CA');
-
+var moment = require("moment");
 /**
  * @swagger
  *  components:
@@ -143,6 +143,9 @@ const getProductById = async(req, res) => {
 const updateProduct = async(req, res) => {
     try {
         let productIdx = products.findIndex((product) => product.productId == req.params.productId);
+        //body does not send product id - retrieves it from the parameters
+        req.body['productId'] = req.params.productId;
+        req.body['startDate'] = moment(req.body['startDate']).format('YYYY/MM/DD');
         products[productIdx] = req.body;
         fs.writeFileSync("data.json",JSON.stringify(products),"utf-8");
         res.status(201).json(products[productIdx]);
@@ -183,10 +186,11 @@ const updateProduct = async(req, res) => {
 //appends the data.json file with the newly added product data based on user input
 const addProduct = async(req, res) => {
     try {
-        let product = { productId:  fakerator.misc.uuid(), ...req.body}
+        req.body['startDate'] = moment(req.body['startDate']).format('YYYY/MM/DD');
+        let product = { productId: fakerator.misc.uuid(), ...req.body}
         products.push(product);
         fs.writeFileSync("data.json",JSON.stringify(products),"utf-8");
-        res.status(201).send(products);
+        res.status(201).send(product);
     } catch (e) {
         console.error(e.message);
         res.status(400).send('Bad Request. The message in the body of the request is either missing or malformed.');
