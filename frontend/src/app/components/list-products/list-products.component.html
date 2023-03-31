@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="container">
         <h1 class="text-center my-5 clickable-btn" (click)="getAllProducts()">Information Management Branch Products:</h1>
-          <div class="input-group mb-4">
+        <div class="input-group mb-4">
             <div class="input-group-prepend">
                 <select class="input-group-text" [(ngModel)]="selectedFilter" required>
                     <option *ngFor="let filter of filterArr" [value]="filter.id">
@@ -11,10 +11,10 @@
             </div>
             <input type="text" class="form-control" placeholder="Search by Developer or Scrum Master name" [(ngModel)]="search">
             <div class="input-group-append">
+                <span class="input-group-text clickable-btn" (click)="getAllProducts()" matTooltip="Clear search results"><i class="bi bi-x"></i></span>
                 <span class="input-group-text clickable-btn" (click)="filterProducts()"><i class="bi bi-search"></i></span>
-              </div>
-          </div>
-
+                </div>
+            </div>
         <div class="float-end pt-2">
             <button class="btn btn-primary" (click)="addProduct()">+ Add Product</button>
             <p class="mt-3">Total Products: {{products?.length}}</p>
