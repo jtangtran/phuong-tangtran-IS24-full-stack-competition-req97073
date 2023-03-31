@@ -28,6 +28,8 @@ export class ListProductsComponent implements OnInit {
   getAllProducts() {
     this.productService.getProducts().subscribe(res =>{
       this.products = res;
+    }, err => {
+      alert("Unable to get list of products. Please try again.");
     });
   }
 
@@ -61,7 +63,9 @@ export class ListProductsComponent implements OnInit {
       let body = {search : this.search.trim(), filter : this.selectedFilter};
       this.productService.filterProducts(body).subscribe(res => {
         this.products = res;
-      })
+      }, err => {
+        alert(`${err}. Please try again.`);
+      });
     }
   }
 }

@@ -117,6 +117,8 @@ export class AddProductComponent {
   addProduct(body) {
     this.productService.addProduct(body).subscribe((res) => {
       this.dialogRef.close(res);
+    }, err => {
+      alert(`${err}. Please try again.`);
     });
   }
 
@@ -124,6 +126,8 @@ export class AddProductComponent {
   editProduct(body) {
     this.productService.updateProduct(body, this.data.productId).subscribe((res) => {
       this.dialogRef.close(res);
-    })
+    }, err => {
+      alert(`${err}. Please try again.`);
+    });
   }
 }
