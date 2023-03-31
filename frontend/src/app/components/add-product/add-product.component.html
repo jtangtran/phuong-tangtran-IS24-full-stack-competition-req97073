@@ -1,0 +1,57 @@
+<div class="dialog-container py-3 px-3">
+    <div class="container-xxl">
+        <h5 *ngIf="!data" class="py-2">Add Product:</h5>
+        <h5 *ngIf="data" class="py-2">Edit Product: </h5>
+        <form [formGroup]="productForm">
+            <div class="row pb-1">
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput formControlName="productName" required>
+                    <mat-error>Product Name is required.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row pb-1">
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Product Owner Name</mat-label>
+                    <input matInput formControlName="productOwnerName" required>
+                    <mat-error>Product Owner Name is required.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row pb-1">
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Scrum Master Name</mat-label>
+                    <input matInput formControlName="scrumMasterName" required>
+                    <mat-error>Scrum Master Name is required.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row pb-1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="startDate" readonly (focus)="picker.open()" required> 
+                    <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="false"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>Start Date is required.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row pb-1" *ngFor="let dev of developers; let i = index">
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Developer {{i+1}}</mat-label>
+                    <input matInput [formControlName]="dev.id">
+                </mat-form-field>
+            </div>
+            <div class="row pb-1">
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Select a methodology</mat-label>
+                    <mat-select formControlName="methodology">
+                      <mat-option *ngFor="let methodology of methodologyDataArr" [value]="methodology">{{methodology}}</mat-option>
+                    </mat-select>
+                    <mat-error>Methodology is required.</mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+        <div class="mb-3 pb-5">
+            <button class="btn btn-primary float-end mb-5" (click)="submitForm()">Submit</button>
+            <a (click)="closeDialog()" class="float-end mt-2 mr-3 cancel-link">Cancel</a>
+        </div>
+    </div>
+</div>
