@@ -7,6 +7,10 @@ After changing directories on both terminals, please run `npm install` on both t
 
 Once the command has been successfully completed, on the server terminal please run `npm start` and then enter `npm start` on the frontend terminal. 
 
-The application should now be running.
+The application should now be running. 
+
+Links:
+Frontend: http://localhost:4200
+Backend (Swagger Documentation): http://localhost:3000/api/api-docs
 
 Thank you for taking the time to review my code!
