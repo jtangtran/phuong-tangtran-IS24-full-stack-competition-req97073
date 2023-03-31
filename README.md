@@ -7,4 +7,6 @@ After changing directories on both terminals, please run `npm install` on both t
 
 Once the command has been successfully completed, on the server terminal please run `npm start` and then enter `npm start` on the frontend terminal. 
 
-The application should now be running. Thank you for taking the time to review my code!
+The application should now be running.
+
+Thank you for taking the time to review my code!
