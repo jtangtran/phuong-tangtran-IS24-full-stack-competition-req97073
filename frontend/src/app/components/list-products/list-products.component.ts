@@ -26,6 +26,7 @@ export class ListProductsComponent implements OnInit {
 
   //gets all products
   getAllProducts() {
+    this.search = '';
     this.productService.getProducts().subscribe(res =>{
       this.products = res;
     }, err => {
